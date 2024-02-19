@@ -1,0 +1,23 @@
+A = []
+for i in range(3):
+  A.append(list(map(int,input().split())))
+
+N = int(input())
+
+
+Bingo_list = A
+Bingo_list.append([A[i][i] for i in range(3)])
+Bingo_list.append([A[i][2-i] for i in range(3)])
+for j in range(3):
+  Bingo_list.append([A[i][j] for i in range(3)])
+
+for i in range(N):
+  b = int(input())
+  for j in Bingo_list:
+    if b in j:
+      j[j.index(b)] = "B"
+
+if ["B","B","B"] in Bingo_list:
+  print("Yes")
+else:
+  print("No")
