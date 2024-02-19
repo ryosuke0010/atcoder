@@ -5,4 +5,5 @@
 
 |No.|Date|Problem|Answer|memo|
 |---|---|---|---|:--|
-|1|2/19|[ABC157](https://atcoder.jp/contests/abc157/tasks/abc157_b)|[abc157b](abc157b)|二次元配列|
+|1|2/19|[ABC157b](https://atcoder.jp/contests/abc157/tasks/abc157_b)|[abc157b](abc157b)|二次元配列|
+|2|2/19|[ABC088](https://atcoder.jp/contests/abc088/tasks/abc088_c)|[abc088c](abc088c)|同上|
