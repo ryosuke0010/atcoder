@@ -1,0 +1,38 @@
+```
+最小値の最大化 ⇒　二分探索(らしい)
+「スコアをxにできるか」⇔「L+1個に切断後の羊羹のすべての長さがx以上となる切り方は存在するか」を探索していく
+xは
+```
+
+#入力
+N, L = map(int,input().split())
+K = int(input())
+A = list(map(int,input().split()))
+
+#判定
+def check(x):
+  num = 0 #何個切れたか
+  pre = 0 #ひとつ前の切断
+  for i in range(N):
+    if A[i] - pre >= x: #x以上で切断
+      num += 1
+      pre = A[i]
+      
+  #最後の切れ端がx以上ならnに加算
+  if L - pre >= x:
+    num += 1
+    
+  return (num >= K+1)
+
+#二分探索ゾーン
+#常にleft < rightでmid(中点)をとり続けて判定⇒left or right をmidで更新
+left, right = -1, L+1
+
+while right - left > 1:
+  mid = (left + right) // 2
+  print(mid)
+  if check(mid):
+    left = mid
+  else:
+    right = mid
+print(left)
