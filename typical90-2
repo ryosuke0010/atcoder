@@ -1,0 +1,21 @@
+from itertools import product
+
+def check(S):
+  score = 0
+  for c in S:
+    if c == '(':
+      score += 1
+    else:
+      score -= 1
+      
+      if score < 0:
+        return False
+  return (score == 0)
+
+#入力  
+N = int(input())
+
+#'('の数はN/2個で固定なので改善の余地あり
+for S in product(['(',')'],repeat=N):
+  if check(S):
+    print(*S,sep='')
