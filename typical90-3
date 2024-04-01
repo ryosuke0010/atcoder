@@ -1,0 +1,35 @@
+n = int(input())
+
+#辺の入力[A,B]の形式からG[A] = [B]の形式に変換
+G = [[] for _ in range(n)]
+for i in range(n-1):
+  a,b = map(int, input().split())
+  a,b = a-1, b-1
+  G[a].append(b)
+  G[b].append(a)
+
+#頂点sからDFS(深さ優先探索)
+def dfs(s):
+  #都市間距離リスト -1:未訪問 0:スタート地点 n:sからの距離
+  dist = [-1] * n
+  dist[s] = 0
+  
+  #次訪問先リスト　最初はスタート地点を入力
+  st = [s]
+  
+  while st:
+    v = st.pop()  #次訪問先
+    for nv in G[v]:  #vからいける都市リスト
+      #nvが未訪問であればstに追加後,距離リストのnv項をv項+1で更新
+      if dist[nv] == -1:
+        st.append(nv)
+        dist[nv] = dist[v] + 1
+        
+  return dist
+
+
+#木の直径を形成する2つの頂点のどちらかは、木の任意の点から最も遠い頂点である
+dist0 = dfs(0)
+mv = max(enumerate(dist0), key=lambda x: x[1])[0]　#mv:0から最も遠い都市
+distmv = dfs(mv)
+print(max(distmv) + 1) #mvから最も遠い都市との距離+1
