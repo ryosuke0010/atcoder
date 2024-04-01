@@ -30,6 +30,6 @@ def dfs(s):
 
 #木の直径を形成する2つの頂点のどちらかは、木の任意の点から最も遠い頂点である
 dist0 = dfs(0)
-mv = max(enumerate(dist0), key=lambda x: x[1])[0]　#mv:0から最も遠い都市
+mv = max(enumerate(dist0), key=lambda x: x[1])[0]  #mv:0から最も遠い都市
 distmv = dfs(mv)
-print(max(distmv) + 1) #mvから最も遠い都市との距離+1
+print(max(distmv) + 1)  #mvから最も遠い都市との距離+1
